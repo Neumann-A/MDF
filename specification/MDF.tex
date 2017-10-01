@@ -161,6 +161,9 @@ Several parameters within the MDF are linked in dimensionality. We use short var
 	\unpenalty}
 \unvbox\ltmcbox
 
+
+In addition to those abbreviations for dataset dimensions MDF specifies a naming schema for Boolean flags. Flags are either prefixed with \inlvar{is} or \inlvar{has} depending which consequence it has on the interpretation of the data. The \inlvar{has} prefix is reserved for flags which describe the ordering of data within a dataset whereas flags prefixed with \inlvar{is} are data descriptive. This means that \inlvar{is} flags, in general, define a narrower context for the interpretation of the data.  In contrast to that \inlvar{has} flags do not narrow the context but influence the ordering of the data within a dataset. This specification will only define a few \inlvar{has} flags because data ordering - in most cases -  is implicitly defined by the dimensions of the specified datasets and thus deemed unnecessary. 
+
 \subsection{Contact}
 
 If you find mistakes in this document or the specified file format or if you want to discuss extensions or improvements to this specification, please open an issue on GitHub:\\
@@ -393,8 +396,8 @@ During processing one might want to keep track which of the final $N$ frames bel
 \inlvar{isFourierTransformed} & \inltab{Int8} & 1 & no & Flag, if the data is stored in frequency space \\ \hline
 \inlvar{isTransferFunctionCorrected} & \inltab{Int8} & 1 & no & Flag, if the data has been corrected by the \inlvar{transferFunction}\\ \hline 
 \inlvar{isFrequencySelection} & \inltab{Int8} & 1 & no & Flag, if only a subset of frequencies has been selected and stored, see \inlvar{frequencySelection}\\ \hline 
-\inlvar{isFastFrameAxis} & \inltab{Int8} & 1 & no & Flag, if the frame dimension $N$ has been moved to the last dimension\\ \hline
-\inlvar{isFramePermution} & \inltab{Int8} & 1 & no & Flag, if the order of frames has been changed, see \inlvar{framePermutation} \\ \hline 
+\inlvar{hasFastFrameAxis} & \inltab{Int8} & 1 & no & Flag, if the frame dimension $N$ has been moved to the last dimension\\ \hline
+\inlvar{hasFramePermution} & \inltab{Int8} & 1 & no & Flag, if the order of frames has been changed, see \inlvar{framePermutation} \\ \hline 
 \inlvar{frequencySelection} & \inltab{Int64} & K & \inlvar{isFrequencySelection} & Indices of selected frequency components \\ \hline
 \inlvar{framePermutation} & \inltab{Int64} & $N$ & \inlvar{isFramePermutation} & Indices of original frame order\\ \hline
 \end{tabularx} 
